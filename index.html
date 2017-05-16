@@ -351,8 +351,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/16/NexT接入网易云更贴/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -462,81 +469,24 @@
       
         
           
-            <blockquote>
-<p>近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结</p>
-</blockquote>
-<p>国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化<br>后端多为spring国际化，这里不做展开，百度一下到处都是</p>
-<h2 id="常见型"><a href="#常见型" class="headerlink" title="常见型"></a>常见型</h2><p>常见的前端国际化方法步骤如下：（原理）</p>
-<ol>
-<li>定义国际化配置</li>
-<li>根据环境读取配置 </li>
-<li>将配置展现在页面上</li>
-</ol>
-<p>展开说：</p>
-<ol>
-<li><p>定义国际化配置：<br>定义的方式有多种，多以文件的形式单独保存，如json，js，properties 等，<br>并且将配置信息以键值对的形式保存备用</p>
-</li>
-<li><p>根据环境读取配置：<br>所谓环境说白了就是用户选择的标志，形式如下：<br><strong>hash型</strong>：#cn; #en; #us<br><strong>saerch型</strong>：?lan=cn; ?lan=en; ?lan=us<br><strong>url/meta型</strong>： 163.com/cn/; 163.com/en<br><strong>缓存型</strong>：缓存形式多为cookie，默认cn，用户重新设定后将缓存更新</p>
-</li>
-<li><p>将配置展现在页面上：<br>使用三方插件或者自己编写插件将配置信息映射到页面上，<br>可以使用，juery.i18n.js 或 react、angular国际化插件等regular暂无插件<br>插件的基本原理都是做字典查询键值匹配替换。</p>
-</li>
-</ol>
-<p>以上三步任意组合都可以完成国际化的任务，只是效率各有不同，可根据项目做自由组合</p>
-<p>###优缺点</p>
-<p><strong>优点</strong>：</p>
-<ol>
-<li>语言包形式统一管理</li>
-<li>工程较大时节省资源</li>
-<li>对于支持多语言项目复用性强</li>
-</ol>
-<p><strong>缺点</strong>：</p>
-<ol>
-<li>配置文件配置复杂</li>
-<li>以键值对的形式定位容易产生混乱</li>
-<li>可读性差</li>
-<li>后期维护时定位比较负责易出错</li>
-</ol>
-<h2 id="不常见型"><a href="#不常见型" class="headerlink" title="不常见型"></a>不常见型</h2><p>不常见的方法步骤如下：（原理）</p>
-<ol>
-<li>将国际化配置分散在各个文件中如：<br> <code>&lt;a class=&#39;i18n&#39;&gt;登录|登入|Sign in|サインイン|로그인&lt;/a&gt;</code></li>
-<li>根据环境确定国际化标记：<br> cn:0, tw:1, en:2, jp:3, kr:4</li>
-<li>根据国际化标记显示相应信息<br> 全局搜索class=i18n的元素，保留相应信息</li>
-</ol>
-<p>###优缺点</p>
-<p><strong>优点</strong>：</p>
-<ol>
-<li>可读性强</li>
-<li>易定位</li>
-<li>配置简单</li>
-<li>内容较少时效率高</li>
-</ol>
-<p><strong>缺点</strong>：</p>
-<ol>
-<li>项目工程量大后会浪费资源</li>
-<li>随着支持的语言种类繁多后不容易维护</li>
-<li>复用性差且耦合度高</li>
-</ol>
-<h2 id="极端通用型"><a href="#极端通用型" class="headerlink" title="极端通用型"></a>极端通用型</h2><p>使用google翻译插件</p>
-<p><a href="https://support.google.com/translate/#googtrans/en/zh-CN&amp;topic=7011755" target="_blank" rel="external">https://support.google.com/translate/#googtrans/en/zh-CN&amp;topic=7011755</a></p>
-<p>适用项目：</p>
-<p>内容庞大且不在乎准确性，时效性强，更新频繁，支持世界语言</p>
-<p>实例：</p>
-<p>阿里国际卖场 <a href="https://www.aliexpress.com/" target="_blank" rel="external">https://www.aliexpress.com/</a><br><img src="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>##项目结合：</p>
-<ol>
-<li>以异步code形式传递信息的，适合做前端国际化</li>
-<li>同步模板式的项目，可使用后端做国际化，如果想轻后端，也可以做前端国际化或者前后端结合做国际化</li>
-</ol>
-<p>##两个例子</p>
-<ol>
-<li>普通异步项目：<br> <strong>nej/jquery项目</strong><br> 如果仅需要支持中文和英文，建议使用第二种形式，如果需要支持多国语言，建议使用第一种形式，code错误码可以添加标记定向到国际版错误信息</li>
-<li>组件式项目：<br> <strong>Regular/Angular/React…项目</strong><br> 因为数据双向绑定和组件化的特点，可以将国际化版本做在组件里，    通过标记继承控制版本的显示，利用路由系统解析hash值，如： <pre><code>&apos;#/cn/s1&apos; : 中文页面S1
-&apos;#/s1&apos; : 页面S1
-&apos;#/en/s1&apos; : 英文页面S1
-</code></pre></li>
-</ol>
-
           
+近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结
+
+国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化后端多为spring国际化，这里不做展开，百度一下到处都是
+常见型常见的前端国际化方法步骤如下：（原理）
+
+定义国际化配置
+根据环境读取配置 
+将配置展现在页面上
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/12/17/前端国际化小结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -646,16 +596,19 @@
       
         
           
-            <blockquote>
-<p>往往我们在做一些特殊的阴影效果的时候，使用图片做背景的方式实际上是很差劲的，在不考虑适配老版本浏览器的前提下，我们可以使用css3的自定义出自己想要的阴影风格。</p>
-</blockquote>
-<p>下面将以曲线阴影和翘边阴影为例，讲解自定义阴影的过程。<br>先来看下效果图<br><img src="http://img.blog.csdn.net/20161010191703289" alt="这里写图片描述"></p>
-<p>##曲线阴影<br>曲线阴影其实可以使用双层阴影重叠的方式实现<br>我们将取消阴影的图片做下分解应该会更容易理解，示意图如下：<br><img src="http://img.blog.csdn.net/20161010192148622" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20161010192155873" alt="这里写图片描述"><br>如上图，图1基础的阴影下，在加一个有弧度的阴影即可。<br>1、图1基础阴影很容易实现，内阴影+外阴影<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">.box-shadow1&#123;</div><div class="line">	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>2、然后使用伪类在元素的后面添加一个“可适配”的阴影，为了可适配，我们就要使用相对定位，实现代码如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">.box-shadow1&#123;</div><div class="line">	position:relative;</div><div class="line">	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;</div><div class="line">&#125;</div><div class="line">.box-shadow1:after&#123;</div><div class="line">	content:&quot;&quot;;</div><div class="line">	position:absolute;</div><div class="line">	background:transparent;</div><div class="line">	top:50%; //设置宽高仅仅设置上下左右边距是为了让系统自动定位。</div><div class="line">	bottom: 1px;</div><div class="line">	left: 10px;</div><div class="line">	right: 10px; </div><div class="line">	z-index: -1; //将副阴影置于主阴影下</div><div class="line">	box-shadow: 0 0 20px rgba(0,0,0,0.7); </div><div class="line">	border-radius: 100px/10px;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>如此即实现了曲线阴影的效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;box box-shadow1&quot;&gt;将box-shadow1作为类使用即可&lt;/div&gt;</div></pre></td></tr></table></figure></p>
-<p>##翘边阴影<br>同理，翘边阴影可以在基础阴影下叠加两个平行四边形即可。<br>这里就直接上分解图和源码了，不再做讲解<br><img src="http://img.blog.csdn.net/20161010192148622" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20161010194338026" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20161010194354866" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20161010194405741" alt="这里写图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">.box-shadow2&#123;</div><div class="line">	position:relative;</div><div class="line">	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;</div><div class="line">&#125;</div><div class="line">.box-shadow2:before,.box-shadow2:after&#123;</div><div class="line">	content: &quot;&quot;;</div><div class="line">	position:absolute; </div><div class="line">	top:20px;bottom: 22px;  </div><div class="line">	background: transparent; </div><div class="line">	box-shadow: 0 8px 20px rgba(0,0,0,0.7);  </div><div class="line">	z-index: -1; </div><div class="line">	background: #fff; </div><div class="line">&#125;</div><div class="line">.box-shadow2:before&#123; </div><div class="line">	left: 22px;  </div><div class="line">	right:12px; </div><div class="line">	transform: skew(-12deg) rotate(-4deg); </div><div class="line">&#125;</div><div class="line">.box-shadow2:after&#123;  </div><div class="line">	left: 12px;  </div><div class="line">	right:22px; </div><div class="line">	transform: skew(12deg) rotate(4deg); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
           
+往往我们在做一些特殊的阴影效果的时候，使用图片做背景的方式实际上是很差劲的，在不考虑适配老版本浏览器的前提下，我们可以使用css3的自定义出自己想要的阴影风格。
+
+下面将以曲线阴影和翘边阴影为例，讲解自定义阴影的过程。先来看下效果图
+##曲线阴影曲线阴影其实可以使用双层阴影重叠的方式实现我们将取消
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/10/CSS3实现曲线阴影和翘边阴影/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -764,10 +717,254 @@
 
       
         
-          
-            <p>目使用时手动写的封装，如有不对不足之处还请指出，谢谢<br>直接上代码吧，没啥说的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">var _$ajax = (function() &#123;</div><div class="line">		/**</div><div class="line">		* 生产XHR兼容IE6</div><div class="line">		*/</div><div class="line">        var createXHR = function()&#123;</div><div class="line">            if(typeof XMLHttpRequest != &quot;undefined&quot;)&#123; // 非IE6浏览器</div><div class="line">                return new XMLHttpRequest();</div><div class="line">            &#125;else if(typeof ActiveXObject != &quot;undefined&quot;)&#123;   // IE6浏览器</div><div class="line">                var version = [</div><div class="line">                    &quot;MSXML2.XMLHttp.6.0&quot;,</div><div class="line">                    &quot;MSXML2.XMLHttp.3.0&quot;,</div><div class="line">                    &quot;MSXML2.XMLHttp&quot;,</div><div class="line">                ];</div><div class="line">                for(var i = 0; i &lt; version.length; i++)&#123;</div><div class="line">                    try&#123;</div><div class="line">                        return new ActiveXObject(version[i]);</div><div class="line">                    &#125;catch(e)&#123;</div><div class="line">                        //跳过</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;else&#123;</div><div class="line">                throw new Error(&quot;您的系统或浏览器不支持XHR对象！&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">		/**</div><div class="line">		* 将JSON格式转化为字符串</div><div class="line">		*/</div><div class="line">        var formatParams = function(data) &#123;</div><div class="line">            var arr = [];</div><div class="line">            for (var name in data) &#123;</div><div class="line">                arr.push(name + &quot;=&quot; + data[name]);</div><div class="line">            &#125;</div><div class="line">            arr.push(&quot;nocache=&quot; + new Date().getTime());</div><div class="line">            return arr.join(&quot;&amp;&quot;);</div><div class="line">        &#125;;</div><div class="line">		/**</div><div class="line">		* 字符串转换为JSON对象，兼容IE6</div><div class="line">		*/</div><div class="line">        var _getJson = (function() &#123;</div><div class="line">            var e = function (e) &#123;</div><div class="line">                try &#123;</div><div class="line">                    return new Function(&quot;return &quot; + e)()</div><div class="line">                &#125; catch (n) &#123;</div><div class="line">                    return null</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            return function (n) &#123;</div><div class="line">                if (&quot;string&quot; != typeof n)return n;</div><div class="line">                try &#123;</div><div class="line">                    if (window.JSON &amp;&amp; JSON.parse)return JSON.parse(n)</div><div class="line">                &#125; catch (t) &#123;</div><div class="line">                &#125;</div><div class="line">                return e(n)</div><div class="line">            &#125;;</div><div class="line">        &#125;)();</div><div class="line">		</div><div class="line">		/**</div><div class="line">		* 回调函数</div><div class="line">		*/</div><div class="line">        var callBack = function (xhr,options) &#123;</div><div class="line">            if (xhr.readyState == 4 &amp;&amp; !options.requestDone) &#123;</div><div class="line">                var status = xhr.status;</div><div class="line">                if (status &gt;= 200 &amp;&amp; status &lt; 300) &#123;</div><div class="line">                    options.success &amp;&amp; options.success(_getJson(xhr.responseText));</div><div class="line">                &#125; else &#123;</div><div class="line">                    options.error &amp;&amp; options.error();</div><div class="line">                &#125;</div><div class="line">                //清空状态</div><div class="line">                this.xhr = null;</div><div class="line">                clearTimeout(options.reqTimeout);</div><div class="line">            &#125;else if(!options.requestDone)&#123;</div><div class="line">	            //设置超时</div><div class="line">                if(!options.reqTimeout) &#123;</div><div class="line">                    options.reqTimeout = setTimeout(function () &#123;</div><div class="line">                        options.requestDone = true;</div><div class="line">                        !!this.xhr &amp;&amp; this.xhr.abort();</div><div class="line">                        clearTimeout(options.reqTimeout);</div><div class="line">                    &#125;, !options.timeout ? 5000 : options.timeout);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        return function (options) &#123;</div><div class="line">            options = options || &#123;&#125;;</div><div class="line">            options.requestDone = false;</div><div class="line">            options.type = (options.type || &quot;GET&quot;).toUpperCase();</div><div class="line">            options.dataType = options.dataType || &quot;json&quot;;</div><div class="line">            options.contentType = options.contentType || &quot;application/x-www-form-urlencoded&quot;;</div><div class="line">            options.async = options.async || true;</div><div class="line">            var params = options.data;</div><div class="line"></div><div class="line">            //创建 - 第一步</div><div class="line">            var xhr = createXHR();</div><div class="line"></div><div class="line">            //接收 - 第三步</div><div class="line">            if(options.async === true) &#123;</div><div class="line"></div><div class="line">                xhr.onreadystatechange = function () &#123;</div><div class="line">                    callBack(xhr,options);</div><div class="line">                &#125;;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            //连接 和 发送 - 第二步</div><div class="line">            if (options.type == &quot;GET&quot;) &#123;</div><div class="line">                params = formatParams(params);</div><div class="line">                xhr.open(&quot;GET&quot;, options.url + &quot;?&quot; + params, options.async);</div><div class="line">                xhr.send(null);</div><div class="line">            &#125; else if (options.type == &quot;POST&quot;) &#123;</div><div class="line">                xhr.open(&quot;POST&quot;, options.url, options.async);</div><div class="line">                //设置表单提交时的内容类型</div><div class="line">                xhr.setRequestHeader(&quot;Content-Type&quot;, options.contentType);</div><div class="line">                xhr.send(params);</div><div class="line">            &#125;</div><div class="line">            // 同步</div><div class="line">            if(options.async === false)&#123;</div><div class="line">                callBack(xhr,options);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;)();</div></pre></td></tr></table></figure></p>
+          <p>目使用时手动写的封装，如有不对不足之处还请指出，谢谢<br>直接上代码吧，没啥说的。<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/02/02/封装原生ajax/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2015/12/18/openVPN连接多个地址失败【填坑】/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zwwill">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zw.will">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/12/18/openVPN连接多个地址失败【填坑】/" itemprop="url">openVPN连接多个地址失败【填坑】</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T00:00:00+08:00">
+                2015-12-18
+              </time>
+            
+
+            
+
+            
+          </span>
 
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          openVPN连接多个地址##openVPN log报错信息##
+
+ All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/12/18/openVPN连接多个地址失败【填坑】/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2015/10/09/iframe父子页面间通信总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zwwill">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/v.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zw.will">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2015/10/09/iframe父子页面间通信总结/" itemprop="url">iframe父子页面间通信总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-10-09T00:00:00+08:00">
+                2015-10-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          随着网页结构的复杂化，页面内嵌frame越来越常见，但不管是作为内容页来显示，还是作为组件模块嵌入，都有父子页面间通信的需求可能，因此为了更好的实现需求就必须了解父子页面间的通信。
+iframe子页面与父页面通信根据iframe中src属性是同域链接还是跨域链接，通信方式也不同。
+##同域下父子页面
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2015/10/09/iframe父子页面间通信总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -877,17 +1074,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2014/05/16/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -965,7 +1160,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -978,7 +1173,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
