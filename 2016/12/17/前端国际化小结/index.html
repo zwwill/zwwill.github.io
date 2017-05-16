@@ -1,0 +1,837 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlee15706e26a824b61.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="zwwill blog" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结
+
+国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化后端多为spring国际化，这里不做展开，百度一下到处都是
+常见型常见的前端国际化方法步骤如下：（原理）
+
+定义国际化配置
+根据环境读取配置 
+将配置展现在页面上
+
+展开说：
+
+定义国际化配置：定义的方式有多种，多以文件的形式单独保存，如json，js，prope">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端国际化小结">
+<meta property="og:url" content="http://www.zwwill.com/2016/12/17/前端国际化小结/index.html">
+<meta property="og:site_name" content="zw.will">
+<meta property="og:description" content="近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结
+
+国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化后端多为spring国际化，这里不做展开，百度一下到处都是
+常见型常见的前端国际化方法步骤如下：（原理）
+
+定义国际化配置
+根据环境读取配置 
+将配置展现在页面上
+
+展开说：
+
+定义国际化配置：定义的方式有多种，多以文件的形式单独保存，如json，js，prope">
+<meta property="og:image" content="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta property="og:updated_time" content="2017-05-16T12:09:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端国际化小结">
+<meta name="twitter:description" content="近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结
+
+国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化后端多为spring国际化，这里不做展开，百度一下到处都是
+常见型常见的前端国际化方法步骤如下：（原理）
+
+定义国际化配置
+根据环境读取配置 
+将配置展现在页面上
+
+展开说：
+
+定义国际化配置：定义的方式有多种，多以文件的形式单独保存，如json，js，prope">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zwwill.com/2016/12/17/前端国际化小结/"/>
+
+
+
+
+
+  <title>前端国际化小结 | zw.will</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zw.will</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Kategorien
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            Über
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2016/12/17/前端国际化小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zwwill">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zw.will">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端国际化小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-17T20:00:00+08:00">
+                2016-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/12/17/前端国际化小结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结</p>
+</blockquote>
+<p>国际化可以分为前端国际化和后端国际化，也可以是前后端组合的国际化<br>后端多为spring国际化，这里不做展开，百度一下到处都是</p>
+<h2 id="常见型"><a href="#常见型" class="headerlink" title="常见型"></a>常见型</h2><p>常见的前端国际化方法步骤如下：（原理）</p>
+<ol>
+<li>定义国际化配置</li>
+<li>根据环境读取配置 </li>
+<li>将配置展现在页面上</li>
+</ol>
+<p>展开说：</p>
+<ol>
+<li><p>定义国际化配置：<br>定义的方式有多种，多以文件的形式单独保存，如json，js，properties 等，<br>并且将配置信息以键值对的形式保存备用</p>
+</li>
+<li><p>根据环境读取配置：<br>所谓环境说白了就是用户选择的标志，形式如下：<br><strong>hash型</strong>：#cn; #en; #us<br><strong>saerch型</strong>：?lan=cn; ?lan=en; ?lan=us<br><strong>url/meta型</strong>： 163.com/cn/; 163.com/en<br><strong>缓存型</strong>：缓存形式多为cookie，默认cn，用户重新设定后将缓存更新</p>
+</li>
+<li><p>将配置展现在页面上：<br>使用三方插件或者自己编写插件将配置信息映射到页面上，<br>可以使用，juery.i18n.js 或 react、angular国际化插件等regular暂无插件<br>插件的基本原理都是做字典查询键值匹配替换。</p>
+</li>
+</ol>
+<p>以上三步任意组合都可以完成国际化的任务，只是效率各有不同，可根据项目做自由组合</p>
+<p>###优缺点</p>
+<p><strong>优点</strong>：</p>
+<ol>
+<li>语言包形式统一管理</li>
+<li>工程较大时节省资源</li>
+<li>对于支持多语言项目复用性强</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>配置文件配置复杂</li>
+<li>以键值对的形式定位容易产生混乱</li>
+<li>可读性差</li>
+<li>后期维护时定位比较负责易出错</li>
+</ol>
+<h2 id="不常见型"><a href="#不常见型" class="headerlink" title="不常见型"></a>不常见型</h2><p>不常见的方法步骤如下：（原理）</p>
+<ol>
+<li>将国际化配置分散在各个文件中如：<br> <code>&lt;a class=&#39;i18n&#39;&gt;登录|登入|Sign in|サインイン|로그인&lt;/a&gt;</code></li>
+<li>根据环境确定国际化标记：<br> cn:0, tw:1, en:2, jp:3, kr:4</li>
+<li>根据国际化标记显示相应信息<br> 全局搜索class=i18n的元素，保留相应信息</li>
+</ol>
+<p>###优缺点</p>
+<p><strong>优点</strong>：</p>
+<ol>
+<li>可读性强</li>
+<li>易定位</li>
+<li>配置简单</li>
+<li>内容较少时效率高</li>
+</ol>
+<p><strong>缺点</strong>：</p>
+<ol>
+<li>项目工程量大后会浪费资源</li>
+<li>随着支持的语言种类繁多后不容易维护</li>
+<li>复用性差且耦合度高</li>
+</ol>
+<h2 id="极端通用型"><a href="#极端通用型" class="headerlink" title="极端通用型"></a>极端通用型</h2><p>使用google翻译插件</p>
+<p><a href="https://support.google.com/translate/#googtrans/en/zh-CN&amp;topic=7011755" target="_blank" rel="external">https://support.google.com/translate/#googtrans/en/zh-CN&amp;topic=7011755</a></p>
+<p>适用项目：</p>
+<p>内容庞大且不在乎准确性，时效性强，更新频繁，支持世界语言</p>
+<p>实例：</p>
+<p>阿里国际卖场 <a href="https://www.aliexpress.com/" target="_blank" rel="external">https://www.aliexpress.com/</a><br><img src="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
+<p>##项目结合：</p>
+<ol>
+<li>以异步code形式传递信息的，适合做前端国际化</li>
+<li>同步模板式的项目，可使用后端做国际化，如果想轻后端，也可以做前端国际化或者前后端结合做国际化</li>
+</ol>
+<p>##两个例子</p>
+<ol>
+<li>普通异步项目：<br> <strong>nej/jquery项目</strong><br> 如果仅需要支持中文和英文，建议使用第二种形式，如果需要支持多国语言，建议使用第一种形式，code错误码可以添加标记定向到国际版错误信息</li>
+<li>组件式项目：<br> <strong>Regular/Angular/React…项目</strong><br> 因为数据双向绑定和组件化的特点，可以将国际化版本做在组件里，    通过标记继承控制版本的显示，利用路由系统解析hash值，如： <pre><code>&apos;#/cn/s1&apos; : 中文页面S1
+&apos;#/s1&apos; : 页面S1
+&apos;#/en/s1&apos; : 英文页面S1
+</code></pre></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/10/CSS3实现曲线阴影和翘边阴影/" rel="next" title="CSS3实现曲线阴影和翘边阴影">
+                <i class="fa fa-chevron-left"></i> CSS3实现曲线阴影和翘边阴影
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/16/NexT接入网易云更贴/" rel="prev" title="NexT接入网易云更贴">
+                NexT接入网易云更贴 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="zwwill" />
+          <p class="site-author-name" itemprop="name">zwwill</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zwwill" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.willspace.cn/" title="WillSpace" target="_blank">WillSpace</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/willspace" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见型"><span class="nav-number">1.</span> <span class="nav-text">常见型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不常见型"><span class="nav-number">2.</span> <span class="nav-text">不常见型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极端通用型"><span class="nav-number">3.</span> <span class="nav-text">极端通用型</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zwwill</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "904ae077c9dd4152b179bcdb1fe00a74",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
