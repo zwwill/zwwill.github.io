@@ -18,7 +18,7 @@ permalink: :year/:month/:day/:title/
 permalink_defaults:
 
 #头像
-avatar: /img/v.png
+avatar: /img/v2.JPG
 
 # Directory
 source_dir: source
