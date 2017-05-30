@@ -73,6 +73,6 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: git@github.com:zwwill/hexo_blog_zwwill_com.git
+  repository: git@github.com:zwwill/zwwill.github.io.git
   branch: master
 

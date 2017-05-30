@@ -12,3 +12,4 @@
 .idea
 npm-debug.log*
 /.deploy_git/
+/public/
