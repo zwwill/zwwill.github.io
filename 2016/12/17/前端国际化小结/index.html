@@ -121,7 +121,7 @@
 
 定义国际化配置：定义的方式有多种，多以文件的形式单独保存，如json，js，prope">
 <meta property="og:image" content="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2017-05-16T13:23:33.000Z">
+<meta property="og:updated_time" content="2017-05-30T06:10:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端国际化小结">
 <meta name="twitter:description" content="近期在做国际化的改造，做了相应的调研，简单做下项目前端国际化的小结
@@ -414,8 +414,7 @@
 </li>
 </ol>
 <p>以上三步任意组合都可以完成国际化的任务，只是效率各有不同，可根据项目做自由组合</p>
-<p>###优缺点</p>
-<p><strong>优点</strong>：</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>优点</strong>：</p>
 <ol>
 <li>语言包形式统一管理</li>
 <li>工程较大时节省资源</li>
@@ -434,8 +433,7 @@
 <li>根据环境确定国际化标记：<br> cn:0, tw:1, en:2, jp:3, kr:4</li>
 <li>根据国际化标记显示相应信息<br> 全局搜索class=i18n的元素，保留相应信息</li>
 </ol>
-<p>###优缺点</p>
-<p><strong>优点</strong>：</p>
+<h3 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h3><p><strong>优点</strong>：</p>
 <ol>
 <li>可读性强</li>
 <li>易定位</li>
@@ -454,13 +452,11 @@
 <p>内容庞大且不在乎准确性，时效性强，更新频繁，支持世界语言</p>
 <p>实例：</p>
 <p>阿里国际卖场 <a href="https://www.aliexpress.com/" target="_blank" rel="external">https://www.aliexpress.com/</a><br><img src="http://img.blog.csdn.net/20161219164851113?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2lsbHNwYWNl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述"></p>
-<p>##项目结合：</p>
-<ol>
+<h2 id="项目结合："><a href="#项目结合：" class="headerlink" title="项目结合："></a>项目结合：</h2><ol>
 <li>以异步code形式传递信息的，适合做前端国际化</li>
 <li>同步模板式的项目，可使用后端做国际化，如果想轻后端，也可以做前端国际化或者前后端结合做国际化</li>
 </ol>
-<p>##两个例子</p>
-<ol>
+<h2 id="两个例子"><a href="#两个例子" class="headerlink" title="两个例子"></a>两个例子</h2><ol>
 <li>普通异步项目：<br> <strong>nej/jquery项目</strong><br> 如果仅需要支持中文和英文，建议使用第二种形式，如果需要支持多国语言，建议使用第一种形式，code错误码可以添加标记定向到国际版错误信息</li>
 <li>组件式项目：<br> <strong>Regular/Angular/React…项目</strong><br> 因为数据双向绑定和组件化的特点，可以将国际化版本做在组件里，    通过标记继承控制版本的显示，利用路由系统解析hash值，如： <pre><code>&apos;#/cn/s1&apos; : 中文页面S1
 &apos;#/s1&apos; : 页面S1
@@ -672,7 +668,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见型"><span class="nav-number">1.</span> <span class="nav-text">常见型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不常见型"><span class="nav-number">2.</span> <span class="nav-text">不常见型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极端通用型"><span class="nav-number">3.</span> <span class="nav-text">极端通用型</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见型"><span class="nav-number">1.</span> <span class="nav-text">常见型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">1.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不常见型"><span class="nav-number">2.</span> <span class="nav-text">不常见型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点-1"><span class="nav-number">2.1.</span> <span class="nav-text">优缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极端通用型"><span class="nav-number">3.</span> <span class="nav-text">极端通用型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目结合："><span class="nav-number">4.</span> <span class="nav-text">项目结合：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#两个例子"><span class="nav-number">5.</span> <span class="nav-text">两个例子</span></a></li></ol></div>
             
 
           </div>
