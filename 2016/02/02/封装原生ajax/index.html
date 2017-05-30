@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="google-site-verification" content="googlee15706e26a824b61.html" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ajax," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.1" />
+
+
+
+
+
+
+<meta name="description" content="目使用时手动写的封装，如有不对不足之处还请指出，谢谢直接上代码吧，没啥说的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="封装原生ajax">
+<meta property="og:url" content="http://www.zwwill.com/2016/02/02/封装原生ajax/index.html">
+<meta property="og:site_name" content="zw.will">
+<meta property="og:description" content="目使用时手动写的封装，如有不对不足之处还请指出，谢谢直接上代码吧，没啥说的。">
+<meta property="og:updated_time" content="2017-05-16T13:23:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="封装原生ajax">
+<meta name="twitter:description" content="目使用时手动写的封装，如有不对不足之处还请指出，谢谢直接上代码吧，没啥说的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.zwwill.com/2016/02/02/封装原生ajax/"/>
+
+
+
+
+
+  <title>封装原生ajax | zw.will</title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?6efe8ae6ca2b1efbe4877e3345675e38";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zw.will</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2016/02/02/封装原生ajax/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zwwill">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/v2.JPG">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zw.will">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">封装原生ajax</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-02-02T20:14:46+08:00">
+                2016-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a class="cloud-tie-join-count" href="/2016/02/02/封装原生ajax/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count join-count" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>目使用时手动写的封装，如有不对不足之处还请指出，谢谢<br>直接上代码吧，没啥说的。<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">var _$ajax = (function() &#123;</div><div class="line">		/**</div><div class="line">		* 生产XHR兼容IE6</div><div class="line">		*/</div><div class="line">        var createXHR = function()&#123;</div><div class="line">            if(typeof XMLHttpRequest != &quot;undefined&quot;)&#123; // 非IE6浏览器</div><div class="line">                return new XMLHttpRequest();</div><div class="line">            &#125;else if(typeof ActiveXObject != &quot;undefined&quot;)&#123;   // IE6浏览器</div><div class="line">                var version = [</div><div class="line">                    &quot;MSXML2.XMLHttp.6.0&quot;,</div><div class="line">                    &quot;MSXML2.XMLHttp.3.0&quot;,</div><div class="line">                    &quot;MSXML2.XMLHttp&quot;,</div><div class="line">                ];</div><div class="line">                for(var i = 0; i &lt; version.length; i++)&#123;</div><div class="line">                    try&#123;</div><div class="line">                        return new ActiveXObject(version[i]);</div><div class="line">                    &#125;catch(e)&#123;</div><div class="line">                        //跳过</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;else&#123;</div><div class="line">                throw new Error(&quot;您的系统或浏览器不支持XHR对象！&quot;);</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">		/**</div><div class="line">		* 将JSON格式转化为字符串</div><div class="line">		*/</div><div class="line">        var formatParams = function(data) &#123;</div><div class="line">            var arr = [];</div><div class="line">            for (var name in data) &#123;</div><div class="line">                arr.push(name + &quot;=&quot; + data[name]);</div><div class="line">            &#125;</div><div class="line">            arr.push(&quot;nocache=&quot; + new Date().getTime());</div><div class="line">            return arr.join(&quot;&amp;&quot;);</div><div class="line">        &#125;;</div><div class="line">		/**</div><div class="line">		* 字符串转换为JSON对象，兼容IE6</div><div class="line">		*/</div><div class="line">        var _getJson = (function() &#123;</div><div class="line">            var e = function (e) &#123;</div><div class="line">                try &#123;</div><div class="line">                    return new Function(&quot;return &quot; + e)()</div><div class="line">                &#125; catch (n) &#123;</div><div class="line">                    return null</div><div class="line">                &#125;</div><div class="line">            &#125;;</div><div class="line">            return function (n) &#123;</div><div class="line">                if (&quot;string&quot; != typeof n)return n;</div><div class="line">                try &#123;</div><div class="line">                    if (window.JSON &amp;&amp; JSON.parse)return JSON.parse(n)</div><div class="line">                &#125; catch (t) &#123;</div><div class="line">                &#125;</div><div class="line">                return e(n)</div><div class="line">            &#125;;</div><div class="line">        &#125;)();</div><div class="line">		</div><div class="line">		/**</div><div class="line">		* 回调函数</div><div class="line">		*/</div><div class="line">        var callBack = function (xhr,options) &#123;</div><div class="line">            if (xhr.readyState == 4 &amp;&amp; !options.requestDone) &#123;</div><div class="line">                var status = xhr.status;</div><div class="line">                if (status &gt;= 200 &amp;&amp; status &lt; 300) &#123;</div><div class="line">                    options.success &amp;&amp; options.success(_getJson(xhr.responseText));</div><div class="line">                &#125; else &#123;</div><div class="line">                    options.error &amp;&amp; options.error();</div><div class="line">                &#125;</div><div class="line">                //清空状态</div><div class="line">                this.xhr = null;</div><div class="line">                clearTimeout(options.reqTimeout);</div><div class="line">            &#125;else if(!options.requestDone)&#123;</div><div class="line">	            //设置超时</div><div class="line">                if(!options.reqTimeout) &#123;</div><div class="line">                    options.reqTimeout = setTimeout(function () &#123;</div><div class="line">                        options.requestDone = true;</div><div class="line">                        !!this.xhr &amp;&amp; this.xhr.abort();</div><div class="line">                        clearTimeout(options.reqTimeout);</div><div class="line">                    &#125;, !options.timeout ? 5000 : options.timeout);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        return function (options) &#123;</div><div class="line">            options = options || &#123;&#125;;</div><div class="line">            options.requestDone = false;</div><div class="line">            options.type = (options.type || &quot;GET&quot;).toUpperCase();</div><div class="line">            options.dataType = options.dataType || &quot;json&quot;;</div><div class="line">            options.contentType = options.contentType || &quot;application/x-www-form-urlencoded&quot;;</div><div class="line">            options.async = options.async || true;</div><div class="line">            var params = options.data;</div><div class="line"></div><div class="line">            //创建 - 第一步</div><div class="line">            var xhr = createXHR();</div><div class="line"></div><div class="line">            //接收 - 第三步</div><div class="line">            if(options.async === true) &#123;</div><div class="line"></div><div class="line">                xhr.onreadystatechange = function () &#123;</div><div class="line">                    callBack(xhr,options);</div><div class="line">                &#125;;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            //连接 和 发送 - 第二步</div><div class="line">            if (options.type == &quot;GET&quot;) &#123;</div><div class="line">                params = formatParams(params);</div><div class="line">                xhr.open(&quot;GET&quot;, options.url + &quot;?&quot; + params, options.async);</div><div class="line">                xhr.send(null);</div><div class="line">            &#125; else if (options.type == &quot;POST&quot;) &#123;</div><div class="line">                xhr.open(&quot;POST&quot;, options.url, options.async);</div><div class="line">                //设置表单提交时的内容类型</div><div class="line">                xhr.setRequestHeader(&quot;Content-Type&quot;, options.contentType);</div><div class="line">                xhr.send(params);</div><div class="line">            &#125;</div><div class="line">            // 同步</div><div class="line">            if(options.async === false)&#123;</div><div class="line">                callBack(xhr,options);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    &#125;)();</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ajax/" rel="tag"># ajax</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/12/18/openVPN连接多个地址失败【填坑】/" rel="next" title="openVPN连接多个地址失败【填坑】">
+                <i class="fa fa-chevron-left"></i> openVPN连接多个地址失败【填坑】
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/10/CSS3实现曲线阴影和翘边阴影/" rel="prev" title="CSS3实现曲线阴影和翘边阴影">
+                CSS3实现曲线阴影和翘边阴影 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/v2.JPG"
+               alt="zwwill" />
+          <p class="site-author-name" itemprop="name">zwwill</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zwwill" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.willspace.cn/" title="WillSpace" target="_blank">WillSpace</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://blog.csdn.net/willspace" title="CSDN" target="_blank">CSDN</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zwwill</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.1"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+    
+    <script>
+      var cloudTieConfig = {
+        url: document.location.href, 
+        sourceId: "",
+        productKey: "904ae077c9dd4152b179bcdb1fe00a74",
+        target: "cloud-tie-wrapper"
+      };
+    </script>
+    <script src="https://img1.ws.126.net/f2e/tie/yun/sdk/loader.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
