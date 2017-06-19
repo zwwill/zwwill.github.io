@@ -7,7 +7,7 @@ tags:
 
 iframe子页面与父页面通信根据iframe中src属性是同域链接还是跨域链接，通信方式也不同。
 
-##同域下父子页面的通信
+## 同域下父子页面的通信
 
 页面间通信常以页面间调用实现，包括以下几个方面：（调用包含html dom，js全局变量，js方法）
 
@@ -16,7 +16,7 @@ iframe子页面与父页面通信根据iframe中src属性是同域链接还是�
 - 主页面内兄弟iframe页面之间相互调用；
 
 *下面我们详细分析*
-###父页面调用子iframe
+### 父页面调用子iframe
 
 ```
 
@@ -46,7 +46,7 @@ window.frames["iframeName"].document.getElementById('子页面中的元素ID');
 
 ```
 
-###子iframe页面调用父页面
+### 子iframe页面调用父页面
 
 ```
 /**
@@ -58,7 +58,7 @@ parent.window.document.getElementById('父页面中的元素ID');
 top.window.func(); 
 top.window.document.getElementById('父页面中的元素ID');
 ```
-###页面内兄弟iframe页面相互调用
+### 页面内兄弟iframe页面相互调用
 其实任意页面间通信是类似的，根据上面两个方法组合就可以实现页面内兄弟iframe页面相互调用
 
 > 原理：在子页面中获取父页面（parent）或顶层页面（top）的window元素，然后再根据兄弟iframe的name或id获取兄弟页面的window对象，得到window对象后就可以随意操作了。
@@ -93,9 +93,9 @@ parent.window.frames["iframe3Name"].document.getElementById('兄弟页面3中的
 
 ```
 
-##跨域下父子页面的通信
+## 跨域下父子页面的通信
 
-###父页面向子页面传递数据
+### 父页面向子页面传递数据
 如果iframe所链接的是外部页面，因为安全机制就不能使用同域名下的通信方式了。
 
 实现的技巧是利用location对象的hash值，通过它传递通信数据。在父页面设置iframe的src后面多加个data字符串，然后在子页面中通过某种方式能即时的获取到这儿的data就可以了，例如：
@@ -104,13 +104,13 @@ parent.window.frames["iframe3Name"].document.getElementById('兄弟页面3中的
 
 2. 然后子页面根据这个data信息进行相应的逻辑处理
 
-###子页面向父页面传递数据
+### 子页面向父页面传递数据
 
 实现技巧就是利用一个代理iframe，它嵌入到子页面中，并且和父页面必须保持是同域，然后通过它充分利用上面第一种通信方式的实现原理就把子页面的数据传递给代理iframe，然后由于代理的iframe和主页面是同域的，所以主页面就可以利用同域的方式获取到这些数据。使用 window.top或者window.parent.parent获取浏览器最顶层window对象的引用。
 
 
 
-###详解
+### 详解
 >此段博文转自[http://tid.tenpay.com/?p=4695](http://tid.tenpay.com/?p=4695)感谢作者lyndon
 
 *先来看看哪些情况下才存在跨域的问题*
@@ -129,7 +129,7 @@ parent.window.frames["iframe3Name"].document.getElementById('兄弟页面3中的
 其中编号6、7两种情况同属于主域名相同的情况，可以设置domain来解决问题，今天就不讨论这种情况了。 对于其他跨域通信的问题，我想又可以分成两类，**其一（第一种情况）**是a.com下面的a.js试图请求b.com下某个接口时产生的跨域问题。**其二（第二种情况）**是当a.com与b.com下面的页面成父子页面关系时试图互相通信时产生的跨域问题，典型的应用场景如a.com/a.html使用iframe内嵌了b.com/b.html，大家都知道a.html内的js脚本试图访问b.html时是会被拒绝的，反之亦然。**第一种情况**，目前主流的方案是JSONP，高版本浏览器支持html5的话，还可以使用XHR2支持跨域通信的新特性。**第二种情况**，目前主要是通过代理页面或者使用postMessageAPI来做，这也是今天要讨论的话题。 第二种情况，有这样一些类似的案例：a.com/a.html使用iframe内嵌了b.com/b.html，现在希望iframe的高度能自动适应b.html的高度，使iframe不要出现滚动条。我们都知道跨域了，a.html是没办法直接读取到b.html的高度的，b.html也没办法把自己的高度告诉a.html。 直接说可以用代理页面的方法搞定这个问题吧，但是怎么代理法，先来看下面这张图：
 ![这里写图片描述](http://img.blog.csdn.net/20151009182823247)
 b.html与a.html是不能直接通信的。我们可以在b.html下面再iframe内嵌一个proxy.html页面，因为这个页面是放在a.com下面的，与a.html同域，所以它其实是可以和a.html直接通信的，假如a.html里面有定义一个方法_callback，在proxy.html可以直接top._callback()调用它。但是b.html本身和proxy.html也是不能直接通信的，所谓代理页面的桥梁作用怎么实现呢? b.html内嵌proxy.html是通过一段类似下面这样的代码： 
-```
+```html
 <iframe id=”proxy” src=”a.com/proxy.html” name=”proxy” frameborder=”0″ width=”0″ height=”0″></iframe>
 ``` 
 这个iframe的src属性b.html是有权限控制的。如果它把src设置成a.com/proxy.html?args=XXX,也就是给url加一个查询字符串，proxy.html内的js是可以读取到的。对的，这个url的查询字符串就是b.html和proxy.html之间通信的桥梁，美中不足的是每次通信都要重写一次url造成一次网络请求，这有时会对服务器及页面的运行效率产生很大的影响。同时由于参数是通过url来传递的，会有长度和数据类型的限制，搜集的资料显示：
@@ -143,7 +143,7 @@ b.html与a.html是不能直接通信的。我们可以在b.html下面再iframe�
 
 上面的方法，通过迂回战术实现了b.html跟a.html通信，但是倒过来，a.html怎么跟b.html通信呢?嵌入在b.html里面的proxy.html可以用top快速的联系上a.html，但是要想让a.html找到proxy.html就不容易了，夹在中间的 b.html生生把它们分开了，a.html没法让b.html去找到proxy.html然后返回给它。只能采用更迂回的战术了。 顺着前面b.html到a.html的通信过程，逆向的想一下，虽然a.html没有办法主动找到proxy.html，但是proxy.html可以反过来告诉a.html它在哪里： 在proxy.html加这么一段脚本：
 
-```
+```javascript
 var topWin = top;  
 function getMessage(data) {  
     alert("messageFormTopWin:" + data);  
@@ -154,7 +154,7 @@ function sendMessage(data) {
 } 
 ```
 在a.html加这么一段脚本：
-```
+```javascript
 var proxyWin = null;  
 function getMessage(data) {  
    alert("messageFormProxyWin:"+data);  
@@ -179,7 +179,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 
 最后简单看一下实测的几个测试页面代码： 
 *代码片段一，a.com/a.html:*
-```
+```html
 <html xmlns="http://www.w3.org/1999/xhtml">  
 <head>  
    <title>a.com</title>  
@@ -211,7 +211,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 </html> 
 ```
 *代码片段二，a.com/proxy.html:*
-```
+```html
 <html xmlns="<A href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>">
 <head>
     <title>a.com</title>
@@ -244,7 +244,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 </html>
 ```
 *代码片段三，b.com/b.html*
-```
+```html
 <html xmlns="<A href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>">
 <head>
     <title>b.com</title>
@@ -279,7 +279,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 </html>
 ```
 *代码片段四，b.com/bproxy.html*
-```
+```html
 <html xmlns="<A href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>">
 <head>
     <title>b.com</title>
@@ -308,7 +308,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 ```
 好吧，现在我必须把话锋调转一下了。前面讲的这么多，也只是抛出来一些之前我们可能会采用的跨域通信方法，事实上代理页面、url传参数和window.name、甚至还有一些利用url的hash值的跨域传值方法，都能百度到不少相关资料。但它们都逃不开代理页面，也就不可避免的要产生网络请求，而事实上这并不是我们的本意，我们原本希望它们能够直接在客户端通信，避免不必要的网络请求开销——这些开销，在访问量超大的站点可能会对服务器产生相当大的压力。那么，有没有更完美一点的替代方案呢？ 必须给大家推荐postMessage。postMessage 正是为了满足一些合理的、不同站点之间的内容能在浏览器端进行交互的需求而设计的。利用postMessage API实现跨域通信非常简单，我们直接看一下实例的代码： 
 *代码片段五，A.com/a.html：*
-```
+```html
 <html xmlns="<A href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>">
 <head runat="server">
     <title>A.com/a.html</title>
@@ -362,7 +362,7 @@ b.html每次加载的时候都先给a.html发一个”连接请求”，让a.htm
 </html>
 ```
 *代码片段六，B.com/b.html：*
-```
+```html
 <html xmlns="<A href="http://www.w3.org/1999/xhtml">http://www.w3.org/1999/xhtml</A>">
 <head runat="server">
     <title>B.com/b.html</title>

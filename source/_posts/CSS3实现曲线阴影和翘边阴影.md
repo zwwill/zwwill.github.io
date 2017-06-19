@@ -16,13 +16,13 @@ tags: "css"
 ![这里写图片描述](http://img.blog.csdn.net/20161010192155873)
 如上图，图1基础的阴影下，在加一个有弧度的阴影即可。
 1、图1基础阴影很容易实现，内阴影+外阴影
-```
+```css
 .box-shadow1{
 	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
 }
 ```
 2、然后使用伪类在元素的后面添加一个“可适配”的阴影，为了可适配，我们就要使用相对定位，实现代码如下
-```
+```css
 .box-shadow1{
 	position:relative;
 	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;
@@ -41,7 +41,7 @@ tags: "css"
 }
 ```
 如此即实现了曲线阴影的效果。
-```
+```html
 <div class="box box-shadow1">将box-shadow1作为类使用即可</div>
 ```
 
@@ -53,7 +53,7 @@ tags: "css"
 ![这里写图片描述](http://img.blog.csdn.net/20161010194354866)
 ![这里写图片描述](http://img.blog.csdn.net/20161010194405741)
 
-```
+```css
 .box-shadow2{
 	position:relative;
 	box-shadow: 0 1px 4px rgba(0,0,0,0.3),0 0 40px rgba(0,0,0,0.1) inset;

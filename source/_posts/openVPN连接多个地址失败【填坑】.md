@@ -2,10 +2,11 @@
 title: openVPN连接多个地址失败【填坑】
 date: 2015-12-18
 tags: "openVPN"
+categories: "环境踩坑"
 ---
 # openVPN连接多个地址
 
-##**openVPN log报错信息**##
+## openVPN log报错信息
 ><font color=red> All TAP-Win32 Adapters On This System Are Currently In Use
 >或
 > All TAP-Windows Adapters On This System Are Currently In Use</font>
@@ -13,7 +14,7 @@ tags: "openVPN"
 
 
 
-##**解决方案**##
+## 解决方案
 
 >遇到问题不要慌，逐一检查
 
@@ -45,7 +46,8 @@ tags: "openVPN"
 7. 最后试试重连两个VPN
 ![这里写图片描述](http://img.blog.csdn.net/20151218191737573)
 </font>
-##**小结**##
+
+## 小结
 >很惊喜吧？是不是感觉“原来这么简单！”，我当初也是百思不得其解。。。唉，还是太急躁，早点看Log不就完事儿了。以后大家要学会冷静啊！哈哈！！
 
 本人OS版本为Win8.1x64，至于WinXP、Win7、MacOS，的解决思路一样，只是设置的名字和位置不一样罢了，这里就不做赘述。

@@ -1,6 +1,8 @@
-## blog.zwwill.com
+# blog.zwwill.com
 
-### 服务
+## 新建
+    hexo new "title"
+## 服务
     hexo s
-### 发布
+## 发布
     hexo d -g

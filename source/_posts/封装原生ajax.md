@@ -6,7 +6,7 @@ tags: "ajax"
 目使用时手动写的封装，如有不对不足之处还请指出，谢谢
 直接上代码吧，没啥说的。
 <!-- more -->
-```
+```javascript
 var _$ajax = (function() {
 		/**
 		* 生产XHR兼容IE6
