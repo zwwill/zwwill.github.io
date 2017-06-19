@@ -76,7 +76,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="openVPN," />
+  <meta name="keywords" content="zwwill blog" />
 
 
 
@@ -92,61 +92,25 @@
 
 
 
-<meta name="description" content="openVPN连接多个地址##openVPN log报错信息##
-
- All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
-
-##解决方案##
-
-遇到问题不要慌，逐一检查
-
- 
-
-首先查网络
-确认帐号密码
-检查软件">
+<meta name="description" content="mac谈到代理就不得不说神器charles，虽然是神器也有不方便或者不合理的地方。
+前言产品在完成开发后会经过开发测试、冒烟测试、预发布测试，最后才能上线，为了保证测试代码统一，几个环境的代码和配置包括域名必须一致，那么QA在移动端测试时就要配置host、IP共享或者代理，windows上的代理多用Finder，mac下是Charles，正常情况下，我们测试都会很顺利，但有的时候会出现配置和环境的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openVPN连接多个地址失败【填坑】">
-<meta property="og:url" content="http://www.zwwill.com/2015/12/18/openVPN连接多个地址失败【填坑】/index.html">
+<meta property="og:title" content="charles代理与host污染">
+<meta property="og:url" content="http://www.zwwill.com/2017/06/07/charles代理与host污染/index.html">
 <meta property="og:site_name" content="zw.will">
-<meta property="og:description" content="openVPN连接多个地址##openVPN log报错信息##
-
- All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
-
-##解决方案##
-
-遇到问题不要慌，逐一检查
-
- 
-
-首先查网络
-确认帐号密码
-检查软件">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218182820958">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218184535416">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218185327076">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218185501808">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218191238700">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218191439680">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218191520355">
-<meta property="og:image" content="http://img.blog.csdn.net/20151218191737573">
-<meta property="og:updated_time" content="2017-06-19T12:16:56.000Z">
+<meta property="og:description" content="mac谈到代理就不得不说神器charles，虽然是神器也有不方便或者不合理的地方。
+前言产品在完成开发后会经过开发测试、冒烟测试、预发布测试，最后才能上线，为了保证测试代码统一，几个环境的代码和配置包括域名必须一致，那么QA在移动端测试时就要配置host、IP共享或者代理，windows上的代理多用Finder，mac下是Charles，正常情况下，我们测试都会很顺利，但有的时候会出现配置和环境的">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-6e87f74d72121f41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-fc97ce166e231bd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-4708d4e70d9aba40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-39d09a11c33fd747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-88c01f2a9dee9868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2017-06-19T12:15:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openVPN连接多个地址失败【填坑】">
-<meta name="twitter:description" content="openVPN连接多个地址##openVPN log报错信息##
-
- All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
-
-##解决方案##
-
-遇到问题不要慌，逐一检查
-
- 
-
-首先查网络
-确认帐号密码
-检查软件">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20151218182820958">
+<meta name="twitter:title" content="charles代理与host污染">
+<meta name="twitter:description" content="mac谈到代理就不得不说神器charles，虽然是神器也有不方便或者不合理的地方。
+前言产品在完成开发后会经过开发测试、冒烟测试、预发布测试，最后才能上线，为了保证测试代码统一，几个环境的代码和配置包括域名必须一致，那么QA在移动端测试时就要配置host、IP共享或者代理，windows上的代理多用Finder，mac下是Charles，正常情况下，我们测试都会很顺利，但有的时候会出现配置和环境的">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/1494908-6e87f74d72121f41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -174,13 +138,13 @@
 
 
 
-  <link rel="canonical" href="http://www.zwwill.com/2015/12/18/openVPN连接多个地址失败【填坑】/"/>
+  <link rel="canonical" href="http://www.zwwill.com/2017/06/07/charles代理与host污染/"/>
 
 
 
 
 
-  <title>openVPN连接多个地址失败【填坑】 | zw.will</title>
+  <title>charles代理与host污染 | zw.will</title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -330,7 +294,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2015/12/18/openVPN连接多个地址失败【填坑】/">
+    <link itemprop="mainEntityOfPage" href="http://www.zwwill.com/2017/06/07/charles代理与host污染/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zwwill">
@@ -347,7 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">openVPN连接多个地址失败【填坑】</h1>
+          <h1 class="post-title" itemprop="name headline">charles代理与host污染</h1>
         
 
         <div class="post-meta">
@@ -359,8 +323,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-18T00:00:00+08:00">
-                2015-12-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-07T00:00:00+08:00">
+                2017-06-07
               </time>
             
 
@@ -400,7 +364,7 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a class="cloud-tie-join-count" href="/2015/12/18/openVPN连接多个地址失败【填坑】/#comments" itemprop="discussionUrl">
+                <a class="cloud-tie-join-count" href="/2017/06/07/charles代理与host污染/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count join-count" itemprop="commentCount"></span>
                 </a>
               </span>
@@ -426,34 +390,65 @@
       
 
       
-        <h1 id="openVPN连接多个地址"><a href="#openVPN连接多个地址" class="headerlink" title="openVPN连接多个地址"></a>openVPN连接多个地址</h1><p>##<strong>openVPN log报错信息</strong>##</p>
+        <p>mac谈到代理就不得不说神器charles，虽然是神器也有不方便或者不合理的地方。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>产品在完成开发后会经过开发测试、冒烟测试、预发布测试，最后才能上线，为了保证测试代码统一，几个环境的代码和配置包括域名必须一致，那么QA在移动端测试时就要配置host、IP共享或者代理，windows上的代理多用Finder，mac下是Charles，正常情况下，我们测试都会很顺利，但有的时候会出现配置和环境的坑，下面详细解释。</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>举个栗子：【前提：MAC+Charles】</p>
+<table>
+<thead>
+<tr>
+<th>.</th>
+<th>.  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>项目域名</td>
+<td>www.zwwill.com</td>
+</tr>
+<tr>
+<td>线上ip</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>测试ip</td>
+<td>192.168.1.2</td>
+</tr>
+<tr>
+<td>项目依赖资源域名</td>
+<td>st.zwwill.com</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><font color="red"> All TAP-Win32 Adapters On This System Are Currently In Use<br>或<br>All TAP-Windows Adapters On This System Are Currently In Use</font><br><img src="http://img.blog.csdn.net/20151218182820958" alt="这里写图片描述"></p>
+<p><strong><em> 重要前提：www.zwwill.com与st.zwwill.com的线上IP相同，且由ngnix做rewrite定位 </em></strong></p>
 </blockquote>
-<p>##<strong>解决方案</strong>##</p>
-<blockquote>
-<p>遇到问题不要慌，逐一检查</p>
-</blockquote>
-<p><font color="blue"> </font></p>
-<ol>
-<li>首先查网络</li>
-<li>确认帐号密码</li>
-<li>检查软件配置，证书、私钥等</li>
-<li>检查版本跟系统有没有冲突，如64x软件装在32xOS中<br><em>以上白痴问题，相信你不会发这些低级错误，从下面步骤去检查吧</em><font color="blue"> </font></li>
-<li>看看你的虚拟网卡有没有被禁，如果如图，右击【启用】重试<br><img src="http://img.blog.csdn.net/20151218184535416" alt="这里写图片描述"><br><em>通过以上步骤，大部分人应该第一个vpn连接是可以连通的，但是第二个还是连不了？</em><blockquote>
-<p>问题依然解决不了不要急，记得去查日志</p>
-</blockquote>
-</li>
-</ol>
-<p><font color="blue"> </font></p>
-<ol>
-<li>这时候我们就要查看Log了，因为他会记载大部分的关键报错<br><img src="http://img.blog.csdn.net/20151218185327076" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151218185501808" alt="这里写图片描述"><br>很明显，报错显示【系统所有的适配器都在使用中】，应该是适配器的问题，我们需要再次进入【网络和共享中心】去查看<br><img src="http://img.blog.csdn.net/20151218191238700" alt="这里写图片描述"><br>可以看到，我们有一个【TAP-Windows Adapter V9】的虚拟网卡已经在运行了，因为程序在安装的时候默认只会添加一个【虚拟网卡】所以想办法再弄一个出来，GG搜一搜很容易就可以找到解决方案。<br>到HOME下去搜索<br><img src="http://img.blog.csdn.net/20151218191439680" alt="这里写图片描述"><br>右击【以管理员身份运行】<br>然后你就可以看到多了一个适配器<br><img src="http://img.blog.csdn.net/20151218191520355" alt="这里写图片描述"><br>我给他取名【虚拟网卡 2】（其实叫啥都行，不重复就可以）</li>
-<li>最后试试重连两个VPN<br><img src="http://img.blog.csdn.net/20151218191737573" alt="这里写图片描述"><br><br>##<strong>小结</strong>##<blockquote>
-<p>很惊喜吧？是不是感觉“原来这么简单！”，我当初也是百思不得其解。。。唉，还是太急躁，早点看Log不就完事儿了。以后大家要学会冷静啊！哈哈！！</p>
-</blockquote>
-</li>
-</ol>
-<p>本人OS版本为Win8.1x64，至于WinXP、Win7、MacOS，的解决思路一样，只是设置的名字和位置不一样罢了，这里就不做赘述。<br>另外，如果你想连3个或者更多连接，那就多建几个呗，但不建议搞太多，一般能用到4个就很多了。</p>
+<p>由于我们在测试环境时【项目依赖资】需要使用线上的资源，所以测试环境的ip映射关系应为：</p>
+<table>
+<thead>
+<tr>
+<th>域名</th>
+<th>IP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>www.zwwill.com</td>
+<td>192.168.1.2</td>
+</tr>
+<tr>
+<td>st.zwwill.com</td>
+<td>192.168.1.1</td>
+</tr>
+</tbody>
+</table>
+<p>测试时的host配置为：<br><img src="http://upload-images.jianshu.io/upload_images/1494908-6e87f74d72121f41.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="host配置"></p>
+<p>在不做charles代理的情况下此坑触及不到，如果开启了charles，坑就出现了。</p>
+<h2 id="坑的模样"><a href="#坑的模样" class="headerlink" title="坑的模样"></a>坑的模样</h2><p><img src="http://upload-images.jianshu.io/upload_images/1494908-fc97ce166e231bd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台信息"><br>奇怪的是，我们的test.js（st.zwwill.com/common/test.js）文件404错误！<br>看下Charles的record信息：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1494908-4708d4e70d9aba40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="www.zwwill.com下的文件"><br>【www.zwwill.com】指向IP【192.168.1.2】正确！</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1494908-39d09a11c33fd747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="st.zwwill.com下的文件"><br>【st.zwwill.com】指向IP【192.168.1.2】错误！❌</p>
+<p>#查查原因<br>检查完log后发现，Charles的代理模式在处理此重情况下会出现误判！导致同源下的资源也走了重定向，这不是我们想要的结果！</p>
+<h2 id="解决方案很简单"><a href="#解决方案很简单" class="headerlink" title="解决方案很简单"></a>解决方案很简单</h2><p>既然Charles没有我们想想的这么智能，那我们就找个方法绕过这个坑。<br>很简单，只需要将【st.zwwill.com】指向我们的线上IP【192.168.1.1】就好。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/1494908-88c01f2a9dee9868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正确的效果"></p>
 
       
     </div>
@@ -481,12 +476,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/openVPN/" rel="tag"># openVPN</a>
-          
-        </div>
-      
 
       
         
@@ -496,8 +485,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/09/iframe父子页面间通信总结/" rel="next" title="iframe父子页面间通信总结">
-                <i class="fa fa-chevron-left"></i> iframe父子页面间通信总结
+              <a href="/2017/06/04/could-not-find-gradle-wrapper-within-android-sdk/" rel="next" title="could not find gradle wrapper within android sdk">
+                <i class="fa fa-chevron-left"></i> could not find gradle wrapper within android sdk
               </a>
             
           </div>
@@ -506,8 +495,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/02/封装原生ajax/" rel="prev" title="封装原生ajax">
-                封装原生ajax <i class="fa fa-chevron-right"></i>
+              <a href="/2017/06/08/Native、Web-App、Hybrid、ReactNative和WEEX/" rel="prev" title="Native、Web App、Hybrid、ReactNative和WEEX">
+                Native、Web App、Hybrid、ReactNative和WEEX <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -668,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openVPN连接多个地址"><span class="nav-number">1.</span> <span class="nav-text">openVPN连接多个地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑"><span class="nav-number">2.</span> <span class="nav-text">坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑的模样"><span class="nav-number">3.</span> <span class="nav-text">坑的模样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案很简单"><span class="nav-number">4.</span> <span class="nav-text">解决方案很简单</span></a></li></ol></div>
             
 
           </div>
