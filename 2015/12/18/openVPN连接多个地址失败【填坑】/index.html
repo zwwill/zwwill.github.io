@@ -92,36 +92,24 @@
 
 
 
-<meta name="description" content="openVPN连接多个地址##openVPN log报错信息##
-
+<meta name="description" content="openVPN连接多个地址openVPN log报错信息
  All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
 
-##解决方案##
-
+解决方案
 遇到问题不要慌，逐一检查
 
- 
-
-首先查网络
-确认帐号密码
-检查软件">
+1. 首先查网络2. 确认帐号密码3. 检查软件配置，证书、">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openVPN连接多个地址失败【填坑】">
 <meta property="og:url" content="http://www.zwwill.com/2015/12/18/openVPN连接多个地址失败【填坑】/index.html">
 <meta property="og:site_name" content="zw.will">
-<meta property="og:description" content="openVPN连接多个地址##openVPN log报错信息##
-
+<meta property="og:description" content="openVPN连接多个地址openVPN log报错信息
  All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
 
-##解决方案##
-
+解决方案
 遇到问题不要慌，逐一检查
 
- 
-
-首先查网络
-确认帐号密码
-检查软件">
+1. 首先查网络2. 确认帐号密码3. 检查软件配置，证书、">
 <meta property="og:image" content="http://img.blog.csdn.net/20151218182820958">
 <meta property="og:image" content="http://img.blog.csdn.net/20151218184535416">
 <meta property="og:image" content="http://img.blog.csdn.net/20151218185327076">
@@ -130,22 +118,16 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20151218191439680">
 <meta property="og:image" content="http://img.blog.csdn.net/20151218191520355">
 <meta property="og:image" content="http://img.blog.csdn.net/20151218191737573">
-<meta property="og:updated_time" content="2017-06-19T12:16:56.000Z">
+<meta property="og:updated_time" content="2017-06-19T12:41:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openVPN连接多个地址失败【填坑】">
-<meta name="twitter:description" content="openVPN连接多个地址##openVPN log报错信息##
-
+<meta name="twitter:description" content="openVPN连接多个地址openVPN log报错信息
  All TAP-Win32 Adapters On This System Are Currently In Use或All TAP-Windows Adapters On This System Are Currently In Use
 
-##解决方案##
-
+解决方案
 遇到问题不要慌，逐一检查
 
- 
-
-首先查网络
-确认帐号密码
-检查软件">
+1. 首先查网络2. 确认帐号密码3. 检查软件配置，证书、">
 <meta name="twitter:image" content="http://img.blog.csdn.net/20151218182820958">
 
 
@@ -426,33 +408,17 @@
       
 
       
-        <h1 id="openVPN连接多个地址"><a href="#openVPN连接多个地址" class="headerlink" title="openVPN连接多个地址"></a>openVPN连接多个地址</h1><p>##<strong>openVPN log报错信息</strong>##</p>
-<blockquote>
+        <h1 id="openVPN连接多个地址"><a href="#openVPN连接多个地址" class="headerlink" title="openVPN连接多个地址"></a>openVPN连接多个地址</h1><h2 id="openVPN-log报错信息"><a href="#openVPN-log报错信息" class="headerlink" title="openVPN log报错信息"></a>openVPN log报错信息</h2><blockquote>
 <p><font color="red"> All TAP-Win32 Adapters On This System Are Currently In Use<br>或<br>All TAP-Windows Adapters On This System Are Currently In Use</font><br><img src="http://img.blog.csdn.net/20151218182820958" alt="这里写图片描述"></p>
 </blockquote>
-<p>##<strong>解决方案</strong>##</p>
-<blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><blockquote>
 <p>遇到问题不要慌，逐一检查</p>
 </blockquote>
-<p><font color="blue"> </font></p>
-<ol>
-<li>首先查网络</li>
-<li>确认帐号密码</li>
-<li>检查软件配置，证书、私钥等</li>
-<li>检查版本跟系统有没有冲突，如64x软件装在32xOS中<br><em>以上白痴问题，相信你不会发这些低级错误，从下面步骤去检查吧</em><font color="blue"> </font></li>
-<li>看看你的虚拟网卡有没有被禁，如果如图，右击【启用】重试<br><img src="http://img.blog.csdn.net/20151218184535416" alt="这里写图片描述"><br><em>通过以上步骤，大部分人应该第一个vpn连接是可以连通的，但是第二个还是连不了？</em><blockquote>
-<p>问题依然解决不了不要急，记得去查日志</p>
-</blockquote>
-</li>
-</ol>
-<p><font color="blue"> </font></p>
-<ol>
-<li>这时候我们就要查看Log了，因为他会记载大部分的关键报错<br><img src="http://img.blog.csdn.net/20151218185327076" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151218185501808" alt="这里写图片描述"><br>很明显，报错显示【系统所有的适配器都在使用中】，应该是适配器的问题，我们需要再次进入【网络和共享中心】去查看<br><img src="http://img.blog.csdn.net/20151218191238700" alt="这里写图片描述"><br>可以看到，我们有一个【TAP-Windows Adapter V9】的虚拟网卡已经在运行了，因为程序在安装的时候默认只会添加一个【虚拟网卡】所以想办法再弄一个出来，GG搜一搜很容易就可以找到解决方案。<br>到HOME下去搜索<br><img src="http://img.blog.csdn.net/20151218191439680" alt="这里写图片描述"><br>右击【以管理员身份运行】<br>然后你就可以看到多了一个适配器<br><img src="http://img.blog.csdn.net/20151218191520355" alt="这里写图片描述"><br>我给他取名【虚拟网卡 2】（其实叫啥都行，不重复就可以）</li>
-<li>最后试试重连两个VPN<br><img src="http://img.blog.csdn.net/20151218191737573" alt="这里写图片描述"><br><br>##<strong>小结</strong>##<blockquote>
+<font color="blue"><br>1. 首先查网络<br>2. 确认帐号密码<br>3. 检查软件配置，证书、私钥等<br>4. 检查版本跟系统有没有冲突，如64x软件装在32xOS中</font><br><em>以上白痴问题，相信你不会发这些低级错误，从下面步骤去检查吧</em><br><font color="blue"><br>5.  看看你的虚拟网卡有没有被禁，如果如图，右击【启用】重试</font><br>    <img src="http://img.blog.csdn.net/20151218184535416" alt="这里写图片描述"><br><em>通过以上步骤，大部分人应该第一个vpn连接是可以连通的，但是第二个还是连不了？</em><br>&gt;问题依然解决不了不要急，记得去查日志<br><br><font color="blue"><br>6. 这时候我们就要查看Log了，因为他会记载大部分的关键报错<br><img src="http://img.blog.csdn.net/20151218185327076" alt="这里写图片描述"><br><img src="http://img.blog.csdn.net/20151218185501808" alt="这里写图片描述"><br>很明显，报错显示【系统所有的适配器都在使用中】，应该是适配器的问题，我们需要再次进入【网络和共享中心】去查看<br><img src="http://img.blog.csdn.net/20151218191238700" alt="这里写图片描述"><br>可以看到，我们有一个【TAP-Windows Adapter V9】的虚拟网卡已经在运行了，因为程序在安装的时候默认只会添加一个【虚拟网卡】所以想办法再弄一个出来，GG搜一搜很容易就可以找到解决方案。<br>到HOME下去搜索<br><img src="http://img.blog.csdn.net/20151218191439680" alt="这里写图片描述"><br>右击【以管理员身份运行】<br>然后你就可以看到多了一个适配器<br><img src="http://img.blog.csdn.net/20151218191520355" alt="这里写图片描述"><br>我给他取名【虚拟网卡 2】（其实叫啥都行，不重复就可以）<br>7. 最后试试重连两个VPN<br><img src="http://img.blog.csdn.net/20151218191737573" alt="这里写图片描述"><br></font>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><blockquote>
 <p>很惊喜吧？是不是感觉“原来这么简单！”，我当初也是百思不得其解。。。唉，还是太急躁，早点看Log不就完事儿了。以后大家要学会冷静啊！哈哈！！</p>
 </blockquote>
-</li>
-</ol>
 <p>本人OS版本为Win8.1x64，至于WinXP、Win7、MacOS，的解决思路一样，只是设置的名字和位置不一样罢了，这里就不做赘述。<br>另外，如果你想连3个或者更多连接，那就多建几个呗，但不建议搞太多，一般能用到4个就很多了。</p>
 
       
@@ -668,7 +634,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openVPN连接多个地址"><span class="nav-number">1.</span> <span class="nav-text">openVPN连接多个地址</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openVPN连接多个地址"><span class="nav-number">1.</span> <span class="nav-text">openVPN连接多个地址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#openVPN-log报错信息"><span class="nav-number">1.1.</span> <span class="nav-text">openVPN log报错信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案"><span class="nav-number">1.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">1.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
             
 
           </div>

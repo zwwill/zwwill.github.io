@@ -105,7 +105,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-4708d4e70d9aba40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-39d09a11c33fd747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1494908-88c01f2a9dee9868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2017-06-19T12:15:41.000Z">
+<meta property="og:updated_time" content="2017-06-19T12:39:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="charles代理与host污染">
 <meta name="twitter:description" content="mac谈到代理就不得不说神器charles，虽然是神器也有不方便或者不合理的地方。
@@ -446,7 +446,7 @@
 <h2 id="坑的模样"><a href="#坑的模样" class="headerlink" title="坑的模样"></a>坑的模样</h2><p><img src="http://upload-images.jianshu.io/upload_images/1494908-fc97ce166e231bd6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="控制台信息"><br>奇怪的是，我们的test.js（st.zwwill.com/common/test.js）文件404错误！<br>看下Charles的record信息：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1494908-4708d4e70d9aba40.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="www.zwwill.com下的文件"><br>【www.zwwill.com】指向IP【192.168.1.2】正确！</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1494908-39d09a11c33fd747.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="st.zwwill.com下的文件"><br>【st.zwwill.com】指向IP【192.168.1.2】错误！❌</p>
-<p>#查查原因<br>检查完log后发现，Charles的代理模式在处理此重情况下会出现误判！导致同源下的资源也走了重定向，这不是我们想要的结果！</p>
+<h2 id="查查原因"><a href="#查查原因" class="headerlink" title="查查原因"></a>查查原因</h2><p>检查完log后发现，Charles的代理模式在处理此重情况下会出现误判！导致同源下的资源也走了重定向，这不是我们想要的结果！</p>
 <h2 id="解决方案很简单"><a href="#解决方案很简单" class="headerlink" title="解决方案很简单"></a>解决方案很简单</h2><p>既然Charles没有我们想想的这么智能，那我们就找个方法绕过这个坑。<br>很简单，只需要将【st.zwwill.com】指向我们的线上IP【192.168.1.1】就好。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/1494908-88c01f2a9dee9868.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="正确的效果"></p>
 
@@ -657,7 +657,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑"><span class="nav-number">2.</span> <span class="nav-text">坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑的模样"><span class="nav-number">3.</span> <span class="nav-text">坑的模样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案很简单"><span class="nav-number">4.</span> <span class="nav-text">解决方案很简单</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑"><span class="nav-number">2.</span> <span class="nav-text">坑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#坑的模样"><span class="nav-number">3.</span> <span class="nav-text">坑的模样</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查查原因"><span class="nav-number">4.</span> <span class="nav-text">查查原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案很简单"><span class="nav-number">5.</span> <span class="nav-text">解决方案很简单</span></a></li></ol></div>
             
 
           </div>
